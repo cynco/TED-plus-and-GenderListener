@@ -3,27 +3,27 @@
 
 # Welcome to the home of TED-plus and GenderListener
 
-**TED-plus** is a dataset of all online TED talks including features from metadata, audio, transcripts, and sound-derived speaker gender labels. Scroll down for the full list of features currently included in TED-plus.
+**TED-plus** is an enhanced dataset of all online TED talks that includes features from metadata, audio, transcripts, and gender labels based on speaker first name and speaker speech (using GenderListener). I created it so that you can effortlessly explore TED talks. Scroll down for the full list of features that I added.
 
-**GenderListener** is a tool that generates speaker gender labels from audio. Use it to add gender labels to any audio data you have.The goal of GenderListener is to make it easier for data scientists and social scientists to explore gender-related trends in speech audio data. GenderListener is based on a Logistic Regression classiffier trained on 1,096 gender-labeld TED talks.
+**GenderListener** is a tool that generates speaker gender labels from audio. Use it to add gender labels to any audio files you have.The goal of GenderListener is to make it easier for data scientists and social scientists to explore gender-related trends in speech audio data. GenderListener is based on a Logistic Regression classiffier that I trained on 1,096 pre-labeled TED talks.
 
-This repository contains all the code used to produce the TED_plus.csv dataset and to build GenderListener.    
+This repository contains all the code I used to to build GenderListener and to produce the TED_plus.csv dataset.    
 
 **TED_plus contains:**  
 - metadata from all online TED talks
-- several derived features to facilitate analysis
+- several derived metadata features to facilitate analysis
 - word_per_min information derived from the transcripts
-- 34 audio features from the TEDLIUM II audio file set
-- gender_name labels from gender_guesser
-- gender_sound labels from genderListener
+- 34 audio features from the TEDLIUM II audio file set (extracted using PyAudioAnalysis3)
+- gender_name labels from Gender_guesser
+- gender_sound labels from GenderListener
 
-Here are some examples of how to use the resources in this repository (in order from least involved to most involved).
+Here are some examples of how to use the code and datasets in this repository (in order from least involved to most involved).
 
 If you want to:  
 
-* **Use the enhanced TED dataset**
+* **Explore the TED talks**
 	1. download "data/ted_plus.csv"
-		- optionally, check out the exploratory analysis and feature creation in "d0. Enhance_metadata.ipynb"
+		- take inspiration from the exploratory analysis in "d0. Enhance_metadata.ipynb"
 
 * **Do exploratory analysis on the TED-plus data:**
 	1. Modify and run **"d0. Enhance_metadata.ipynb"** .   
@@ -55,14 +55,14 @@ In most cases, the main modification will be to change the input and output file
 
 Some downloads you may need:   
 **Raw metadata and transcripts:** [Kaggle-Rounak_Banik](https://www.kaggle.com/rounakbanik/ted-talks)  
-**Raw audio data:**[TEDLIUM II](http://www-lium.univ-lemans.fr/en/content/ted-lium-corpus)  
+**Audio recordings of TED talks:**[TEDLIUM II](http://www-lium.univ-lemans.fr/en/content/ted-lium-corpus)  
 **pyAudioAnalysis3:** [Python 3 version](https://github.com/ksingla025/pyAudioAnalysis3)  
-PyAudioAnalysis was created by [Theodoros Giannakopoulos] (http://www.di.uoa.gr/~tyiannak), Postdoc researcher at NCSR Demokritos, Athens, Greece.  
+PyAudioAnalysis was created by [Theodoros Giannakopoulos](http://www.di.uoa.gr/~tyiannak), Postdoc researcher at NCSR Demokritos, Athens, Greece.  
 	
 	
 # TED-plus features:
 
-Original metadata features:  
+Original metadata features (courtesy of Rounak Banik):  
 * **name:** The official name of the TED Talk. Includes the title and the speaker.
 * **title:** The title of the talk
 * **description:** A blurb of what the talk is about.
@@ -85,7 +85,7 @@ Original metadata features:
 * **url:** The URL of the talk.
 * **views:** The number of views on the talk.
 
-Enhanced metadata:    
+Enhanced metadata (courtesy of Cynthia Correa):    
 * **link:** (html tag to display url as a link that gets opened in a new tab)
 * **annualTED:** 1 if event is an annual TED event rather than a TEDx event.
 * **film_year**
@@ -100,7 +100,7 @@ Ratings:
 * **speaker_first_name**
 * **words_per_minute:** Word count from transcript divided by duration in minutes  
 
-34 audio features from PyAudioAnalysis:  
+34 audio features extracted using PyAudioAnalysis:  
 * **'ZCR', 'Energy','EnergyEntropy','SpectralCentroid',  
 'SpectralSpread', 'SpectralEntropy','SpectralFlux', 'SpectralRollof',   
 'mfcc1','mfcc2','mfcc3','mfcc4',  
